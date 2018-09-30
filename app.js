@@ -56,8 +56,22 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
     document.querySelector('#score-' + activePlayer).textContent = score[activePlayer];
     
 
+    
+    let userSetScore = document.querySelector('#final-score').value;
+    let winningScore;
+
+
+
+
+    if(userSetScore){
+        winningScore = userSetScore;
+    }else{
+        winningScore = 100;
+    }
+    
+
     // Check who won the game
-    if(score[activePlayer] >= 100){
+    if(score[activePlayer] >= winningScore){
         document.querySelector('#name-'+ activePlayer).textContent = 'Winner!';
         document.querySelector('.dice').style.display = 'none';
         document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
@@ -76,7 +90,7 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
 /*
 nextplayer function does nothing but it gives the controll to the next player if one comes or tow consecutive sixes come. the ternary operator in the
 function checks if activePlayer is 0 then activePlayer will be 1 else the activePlayer will remain zero because there are only two players active player
-will toggle between 0 and 1
+will toggle between zero and one
 
 */
 
